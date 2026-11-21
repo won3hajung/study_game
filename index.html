@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🧪 과학 퀴즈 몬스터 배틀</title>
+  <title>과학 퀴즈 몬스터 배틀</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -70,22 +70,22 @@
       text-shadow: 0 1px 3px rgba(0,0,0,0.6);
       box-shadow: 0 0 20px rgba(253, 224, 71, 0.65);
     }
+    .tier-시크릿 {
+      background: linear-gradient(135deg, #f43f5e, #a855f7, #38bdf8);
+      border-color: #f9a8d4;
+      color: #ffffff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      box-shadow: 0 0 16px rgba(244, 114, 182, 0.7);
+    }
   </style>
 </head>
 
 <body class="pb-14">
 
   <header class="max-w-6xl mx-auto pt-6 px-4 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold tracking-wider mb-2">
-      <span>WINNER REWARD: CATCH OR EVOLVE</span>
-    </div>
     <h1 class="font-game text-3xl sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-fuchsia-300 to-amber-300 drop-shadow">
-      🧪 과학 퀴즈 몬스터 배틀    
+      과학 퀴즈 몬스터 배틀
     </h1>
-    <p class="text-slate-300 text-xs sm:text-sm mt-2">
-      배틀 승리 시 [상대 영입] 또는 [내 몬스터 진화] 중 원하는 보상을 선택하세요!
-    </p>
-
     <div class="mt-5 flex flex-wrap justify-center items-center gap-3 sm:gap-5 bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-2xl py-3 px-5 shadow-xl">
       <div class="flex items-center gap-2">
         <span class="text-amber-400 text-lg">🏆</span>
@@ -141,30 +141,8 @@
 
     <section id="tab-battle" class="tab-section">
       <div id="battle-setup" class="bg-slate-900/85 backdrop-blur-md border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-2xl">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-5">
-          <div>
-            <h2 class="font-game text-2xl text-cyan-300">⚔️ 출전 몬스터 & 상대 매칭</h2>
-            <p class="text-slate-400 text-xs sm:text-sm mt-1">
-              상대 몬스터를 물리치면 <span class="text-amber-300 font-bold">상대 영입 또는 내 몬스터 진화</span> 선택 기회가 주어집니다!
-            </p>
-          </div>
-          <div class="flex flex-wrap items-center gap-2 bg-slate-950/80 p-2.5 rounded-xl border border-slate-800">
-            <label for="enemy-tier-filter" class="text-xs font-bold text-slate-400">상대 등급:</label>
-            <select id="enemy-tier-filter" class="bg-slate-800 text-white text-xs sm:text-sm rounded-lg px-3 py-1.5 border border-slate-700 focus:outline-none focus:border-indigo-500">
-              <option value="match">🎯 내 몬스터 등급 맞춤 매칭</option>
-              <option value="all">🎲 100종 전체 랜덤 매칭</option>
-              <option value="기본">1단계: 기본 (쉬움 퀴즈)</option>
-              <option value="진화">2단계: 진화 (쉬움 퀴즈)</option>
-              <option value="특별">3단계: 특별 (보통 퀴즈)</option>
-              <option value="전설">4단계: 전설 (보통 퀴즈)</option>
-              <option value="환상">5단계: 환상 (어려움 퀴즈)</option>
-              <option value="인공">6단계: 인공 (어려움 퀴즈)</option>
-              <option value="AI">7단계: AI (어려움 퀴즈)</option>
-              <option value="변종">8단계: 변종 (초고난도 퀴즈)</option>
-              <option value="전설의 변종">9단계: 전설의 변종 (초고난도 퀴즈)</option>
-              <option value="환상의 변종">10단계: 환상의 변종 (초고난도 퀴즈)</option>
-            </select>
-          </div>
+        <div class="border-b border-slate-800 pb-4 mb-5">
+          <h2 class="font-game text-2xl text-cyan-300">⚔️ 출전 몬스터 선택</h2>
         </div>
 
         <div id="damage-boost-banner" class="hidden mb-4 p-3 rounded-xl bg-amber-500/20 border border-amber-400/50 text-amber-200 text-xs sm:text-sm font-bold flex items-center justify-between">
@@ -186,9 +164,6 @@
           <span id="b-turn-badge" class="px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-300 text-xs font-bold">
             TURN 1 - 내 공격 차례
           </span>
-          <span id="b-quiz-diff-badge" class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold">
-            출제 난이도: 쉬움
-          </span>
           <button onclick="forfeitBattle()" class="text-xs px-3 py-1 rounded-lg bg-slate-800 hover:bg-rose-900/60 text-slate-300 hover:text-rose-200 border border-slate-700 transition">
             🏳️ 기권하기
           </button>
@@ -204,7 +179,7 @@
                   <span id="b-my-tier" class="text-xs px-2 py-0.5 rounded-md border font-bold tier-기본">기본</span>
                 </div>
               </div>
-              <div id="b-my-status-badges" class="flex gap-1"></div>
+              <div id="b-my-status-badges" class="flex flex-wrap gap-1 justify-end"></div>
             </div>
             <div class="h-32 flex items-center justify-center my-2 bg-slate-950/60 rounded-xl border border-slate-800/80">
               <div id="b-my-avatar" class="text-7xl select-none anim-idle">👺</div>
@@ -229,7 +204,7 @@
                   <span id="b-enemy-tier" class="text-xs px-2 py-0.5 rounded-md border font-bold tier-기본">기본</span>
                 </div>
               </div>
-              <div id="b-enemy-status-badges" class="flex gap-1"></div>
+              <div id="b-enemy-status-badges" class="flex flex-wrap gap-1 justify-end"></div>
             </div>
             <div class="h-32 flex items-center justify-center my-2 bg-slate-950/60 rounded-xl border border-slate-800/80">
               <div id="b-enemy-avatar" class="text-7xl select-none anim-idle">👻</div>
@@ -283,9 +258,9 @@
     <section id="tab-items" class="tab-section hidden">
       <div class="bg-slate-900/85 backdrop-blur-md border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-2xl">
         <div class="border-b border-slate-800 pb-4 mb-5">
-          <h2 class="font-game text-2xl text-fuchsia-300">🎒 특수 아이템 가방</h2>
+          <h2 class="font-game text-2xl text-fuchsia-300">🎒 아이템 가방</h2>
           <p class="text-slate-400 text-xs sm:text-sm mt-1">
-            배틀에서 승리할 때마다 확률적으로 특수 아이템을 획득합니다. 아이템을 사용하면 즉시 소모되며 강력한 효과가 발동합니다!
+            배틀에서 승리할 때마다 확률적으로 아이템을 획득합니다. 아이템을 사용하면 즉시 소모되며 강력한 효과가 발동합니다!
           </p>
         </div>
 
@@ -429,6 +404,19 @@
       return "tier-" + tier.replace(/\s+/g, "");
     }
 
+    const TIER_ORDER = [
+      "기본",
+      "진화",
+      "특별",
+      "전설",
+      "환상",
+      "인공",
+      "AI",
+      "변종",
+      "전설의 변종",
+      "환상의 변종"
+    ];
+
     const monsterData = {
       goblin: { name: "고블린", emoji: "👺", type: "기본", maxHp: 150, skills: [{ name: "몽둥이 때리기", damage: 60, limit: -1, desc: "기본 물리 타격 (60 피해)" }], evolvedTo: "ogre" },
       fairy: { name: "요정", emoji: "🧚", type: "기본", maxHp: 155, skills: [{ name: "반짝 마법가루", damage: 65, limit: -1, desc: "빛의 가루 공격 (65 피해)" }, { name: "치유의 빛", special: "heal50", limit: 2, desc: "HP 50 회복 (2회)" }], evolvedTo: "high_fairy" },
@@ -553,18 +541,30 @@
           { name: "랜덤 데미지 브레스", special: "secret_random_dmg", limit: -1, desc: "랜덤으로 200 또는 250 데미지를 준다" },
           { name: "시크릿 미라클", special: "secret_miracle", limit: 1, desc: "자기 자신을 내 보유 몬스터에서 없엔다. 대신 상대방을 바로 이긴다." }
         ]
+      },
+
+      secret_unicorn: {
+        name: "시크릿 유니콘",
+        emoji: "🦄✨",
+        type: "시크릿",
+        maxHp: 300,
+        skills: [
+          { name: "뿔 파동", damage: 200, limit: -1, desc: "200 데미지를 준다 (공격 받을 때마다 공격력 +10)" },
+          { name: "분노의 시크릿 음파", special: "secret_sleep", limit: 1, desc: "상대방을 잠들게 한다. 상대방은 1차례동안 공격을 못한다. (1회 한정)" }
+        ]
       }
     };
 
     const monsterKeys = Object.keys(monsterData).filter(k => monsterData[k].type !== "시크릿");
     const legendKeys = Object.keys(monsterData).filter(k => monsterData[k].type === "전설");
+    const mythicalKeys = Object.keys(monsterData).filter(k => monsterData[k].type === "환상");
 
     const ITEM_DATABASE = [
       {
         id: "remove_dup",
         name: "중복제거",
         emoji: "🧹",
-        rarity: "흔함 (1순위)",
+        rarity: "흔함",
         badgeClass: "bg-slate-700 text-slate-200 border-slate-500",
         dropWeight: 45,
         desc: "내가 가지고 있는 중복 몬스터를 중복되지 않도록 정리해 없애줍니다."
@@ -573,9 +573,9 @@
         id: "damage_boost",
         name: "데미지 늘리기",
         emoji: "🔥",
-        rarity: "희귀 (3순위)",
+        rarity: "희귀",
         badgeClass: "bg-amber-700/80 text-amber-100 border-amber-400",
-        dropWeight: 55,
+        dropWeight: 65,
         desc: "다음에 하는 대전에서 내 몬스터가 주는 데미지가 50 추가됩니다."
       }
     ];
@@ -628,9 +628,9 @@
       owned: ["goblin", "fairy", "ghost"],
       dex: { goblin: true, fairy: true, ghost: true },
       monsterStats: {
-        goblin: { wins: 0, tier: "기본" },
-        fairy: { wins: 0, tier: "기본" },
-        ghost: { wins: 0, tier: "기본" }
+        goblin: { wins: 0, streak: 0, tier: "기본" },
+        fairy: { wins: 0, streak: 0, tier: "기본" },
+        ghost: { wins: 0, streak: 0, tier: "기본" }
       },
       items: {
         remove_dup: 0,
@@ -641,19 +641,20 @@
 
     function saveGame() {
       try {
-        localStorage.setItem("sci_monster_battle_100_v8", JSON.stringify(gameState));
+        localStorage.setItem("sci_monster_battle_100_v12", JSON.stringify(gameState));
       } catch (e) {}
     }
 
     function loadGame() {
       try {
-        const saved = localStorage.getItem("sci_monster_battle_100_v8");
+        const saved = localStorage.getItem("sci_monster_battle_100_v12");
         if (saved) {
           const parsed = JSON.parse(saved);
           gameState = {
             ...gameState,
             ...parsed,
             consecutiveWins: parsed.consecutiveWins || 0,
+            monsterStats: parsed.monsterStats || {},
             items: {
               remove_dup: 0,
               damage_boost: 0,
@@ -721,6 +722,27 @@
     let selectedMyMonsterIndex = 0;
     let battleState = null;
 
+    function getMatchCandidateKeys(myKey, myTier) {
+      if (myKey === "secret_dragon") {
+        return legendKeys;
+      }
+      if (myKey === "secret_unicorn") {
+        return mythicalKeys;
+      }
+
+      const idx = TIER_ORDER.indexOf(myTier);
+      const allowedTiers = [];
+      if (idx >= 0) {
+        allowedTiers.push(TIER_ORDER[idx]);
+        if (idx + 1 < TIER_ORDER.length) {
+          allowedTiers.push(TIER_ORDER[idx + 1]);
+        }
+      }
+
+      const candidates = monsterKeys.filter(k => allowedTiers.includes(monsterData[k].type));
+      return candidates.length > 0 ? candidates : monsterKeys;
+    }
+
     function renderBattleSetup() {
       document.getElementById("battle-setup").classList.remove("hidden");
       document.getElementById("battle-arena").classList.add("hidden");
@@ -742,7 +764,8 @@
 
       gameState.owned.forEach((key, index) => {
         const mon = monsterData[key];
-        const stats = gameState.monsterStats[key] || { wins: 0, tier: mon.type };
+        const stats = gameState.monsterStats[key] || { wins: 0, streak: 0, tier: mon.type };
+        const streak = stats.streak || 0;
         const isSelected = selectedMyMonsterIndex === index;
 
         const card = document.createElement("div");
@@ -761,7 +784,7 @@
               <h4 class="font-game text-lg text-white">${mon.name}</h4>
               <span class="text-xs px-2 py-0.5 rounded-md border font-bold ${tierToCssClass(stats.tier)}">${stats.tier}</span>
             </div>
-            <p class="text-xs text-slate-400 mt-1">HP: ${hpDisplay} | 승리: ${stats.wins}승</p>
+            <p class="text-xs text-slate-400 mt-1">HP: ${hpDisplay} | 누적 ${stats.wins}승 · <strong class="text-amber-300">${streak}연승</strong></p>
             <div class="text-[11px] text-indigo-300 mt-1">보유 기술: ${mon.skills.map(s => s.name).join(", ")}</div>
           </div>
           <div>
@@ -780,28 +803,15 @@
       }
 
       const myMon = monsterData[selectedMyMonsterKey];
-      const myStats = gameState.monsterStats[selectedMyMonsterKey] || { wins: 0, tier: myMon.type };
+      const myStats = gameState.monsterStats[selectedMyMonsterKey] || { wins: 0, streak: 0, tier: myMon.type };
 
-      let enemyKey;
       let actualMyHp = myMon.maxHp;
-
-      if (myMon.type === "시크릿") {
+      if (myMon.getDynamicHp) {
         actualMyHp = myMon.getDynamicHp();
-        enemyKey = legendKeys[Math.floor(Math.random() * legendKeys.length)];
-      } else {
-        const filterVal = document.getElementById("enemy-tier-filter").value;
-        let availableEnemies = monsterKeys;
-
-        if (filterVal === "match") {
-          availableEnemies = monsterKeys.filter(k => monsterData[k].type === myStats.tier);
-          if (availableEnemies.length === 0) availableEnemies = monsterKeys;
-        } else if (filterVal !== "all") {
-          availableEnemies = monsterKeys.filter(k => monsterData[k].type === filterVal);
-          if (availableEnemies.length === 0) availableEnemies = monsterKeys;
-        }
-        enemyKey = availableEnemies[Math.floor(Math.random() * availableEnemies.length)];
       }
 
+      const candidates = getMatchCandidateKeys(selectedMyMonsterKey, myStats.tier);
+      const enemyKey = candidates[Math.floor(Math.random() * candidates.length)];
       const enemyMon = monsterData[enemyKey];
 
       const activeDmgBonus = gameState.nextBattleDamageBonus || 0;
@@ -820,6 +830,7 @@
         myMaxHp: actualMyHp,
         mySkills: JSON.parse(JSON.stringify(myMon.skills)),
         damageBonus: activeDmgBonus,
+        counterAtkBonus: 0,
 
         enemyKey: enemyKey,
         enemyName: enemyMon.name,
@@ -828,11 +839,12 @@
         enemyHp: enemyMon.maxHp,
         enemyMaxHp: enemyMon.maxHp,
         enemySkills: JSON.parse(JSON.stringify(enemyMon.skills)),
+        enemyAsleepTurns: 0,
 
         turn: 1,
         isMyTurn: true,
         shields: { my: false, enemy: false },
-        skillLimits: {}
+        usedOnceSkills: {}
       };
 
       document.getElementById("battle-setup").classList.add("hidden");
@@ -842,7 +854,10 @@
       document.getElementById("battle-log").innerHTML = "";
 
       updateBattleUI();
-      addBattleLog(`⚔️ 배틀 시작! [${myMon.name}] VS [${enemyMon.name}] 전투 개시!`, "info");
+      addBattleLog(`⚔️ 배틀 시작! [${myMon.name}] VS [${enemyMon.name}] (${enemyMon.type}) 전투 개시!`, "info");
+      if (selectedMyMonsterKey === "secret_unicorn") {
+        addBattleLog(`🦄 [시크릿 유니콘] 특성 활성! 공격을 받을 때마다 공격력이 +10씩 강해집니다!`, "success");
+      }
       if (activeDmgBonus > 0) {
         addBattleLog(`🔥 [데미지 늘리기] 효과 적용! 이번 배틀 동안 모든 공격 데미지가 +${activeDmgBonus} 증가합니다!`, "success");
       }
@@ -859,8 +874,9 @@
 
       const myBadges = document.getElementById("b-my-status-badges");
       myBadges.innerHTML = "";
-      if (battleState.damageBonus > 0) {
-        myBadges.innerHTML += `<span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40 font-bold">ATK +${battleState.damageBonus}</span>`;
+      const totalAtkBonus = (battleState.damageBonus || 0) + (battleState.counterAtkBonus || 0);
+      if (totalAtkBonus > 0) {
+        myBadges.innerHTML += `<span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40 font-bold">ATK +${totalAtkBonus}</span>`;
       }
       if (battleState.shields.my) {
         myBadges.innerHTML += `<span class="text-[10px] px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 font-bold">🛡️ 방어막</span>`;
@@ -873,9 +889,11 @@
       document.getElementById("b-enemy-hp-text").innerText = `${Math.max(0, battleState.enemyHp)} / ${battleState.enemyMaxHp}`;
       document.getElementById("b-enemy-hp-bar").style.width = `${Math.max(0, (battleState.enemyHp / battleState.enemyMaxHp) * 100)}%`;
 
-      const diff = getQuizDifficultyByTier(battleState.myTier);
-      const diffNames = { easy: "쉬움 (1-2단계)", normal: "보통 (3-4단계)", hard: "어려움 (5-7단계)", expert: "초고난도 (8-10단계)" };
-      document.getElementById("b-quiz-diff-badge").innerText = `출제 난이도: ${diffNames[diff]}`;
+      const enemyBadges = document.getElementById("b-enemy-status-badges");
+      enemyBadges.innerHTML = "";
+      if (battleState.enemyAsleepTurns > 0) {
+        enemyBadges.innerHTML += `<span class="text-[10px] px-2 py-0.5 rounded bg-purple-500/20 text-purple-200 border border-purple-400/40 font-bold">💤 수면 (${battleState.enemyAsleepTurns}턴)</span>`;
+      }
       document.getElementById("b-turn-badge").innerText = battleState.isMyTurn ? `TURN ${battleState.turn} - 내 공격 차례` : `TURN ${battleState.turn} - 상대 AI 반격 차례`;
     }
 
@@ -884,21 +902,29 @@
       container.innerHTML = "";
 
       if (!battleState.isMyTurn) {
-        container.innerHTML = `<div class="col-span-2 text-center text-slate-400 text-sm py-4">상대 AI가 공격 준비 중입니다...</div>`;
+        container.innerHTML = `<div class="col-span-2 text-center text-slate-400 text-sm py-4">상대 AI 차례를 진행 중입니다...</div>`;
         return;
       }
 
+      const totalAtkBonus = (battleState.damageBonus || 0) + (battleState.counterAtkBonus || 0);
+
       battleState.mySkills.forEach((skill, idx) => {
-        const bonusText = battleState.damageBonus > 0 && skill.damage ? ` (+${battleState.damageBonus})` : "";
+        const isUsedOnce = skill.limit === 1 && battleState.usedOnceSkills[skill.name];
+        const bonusText = totalAtkBonus > 0 && skill.damage ? ` (+${totalAtkBonus})` : "";
         const btn = document.createElement("button");
-        btn.className = "p-3 rounded-xl bg-slate-900 hover:bg-indigo-900/60 border border-slate-800 hover:border-indigo-500 text-left transition flex justify-between items-center";
-        btn.onclick = () => triggerSkillQuiz(idx);
+        btn.disabled = !!isUsedOnce;
+        btn.className = isUsedOnce
+          ? "p-3 rounded-xl bg-slate-900/50 border border-slate-800 text-left opacity-50 cursor-not-allowed flex justify-between items-center"
+          : "p-3 rounded-xl bg-slate-900 hover:bg-indigo-900/60 border border-slate-800 hover:border-indigo-500 text-left transition flex justify-between items-center";
+        if (!isUsedOnce) {
+          btn.onclick = () => triggerSkillQuiz(idx);
+        }
         btn.innerHTML = `
           <div>
             <div class="font-bold text-white text-sm">⚡ ${skill.name} <span class="text-amber-400">${bonusText}</span></div>
             <div class="text-xs text-slate-400 mt-0.5">${skill.desc}</div>
           </div>
-          <span class="text-xs px-2 py-1 rounded bg-indigo-500/20 text-indigo-300 font-bold border border-indigo-400/30">퀴즈 풀기</span>
+          <span class="text-xs px-2 py-1 rounded ${isUsedOnce ? 'bg-slate-800 text-slate-500' : 'bg-indigo-500/20 text-indigo-300 font-bold border border-indigo-400/30'}">${isUsedOnce ? '사용 완료' : '퀴즈 풀기'}</span>
         `;
         container.appendChild(btn);
       });
@@ -911,7 +937,7 @@
       document.getElementById("battle-actions").classList.add("hidden");
       document.getElementById("quiz-container").classList.remove("hidden");
 
-      const diff = getQuizDifficultyByTier(battleState.myTier);
+      const diff = getQuizDifficultyByTier(battleState.enemyTier);
       const pool = quizDatabase[diff];
       const quiz = pool[Math.floor(Math.random() * pool.length)];
 
@@ -940,6 +966,10 @@
       const enemyAvatar = document.getElementById("b-enemy-avatar");
 
       if (isCorrect) {
+        if (skill.limit === 1) {
+          battleState.usedOnceSkills[skill.name] = true;
+        }
+
         playSfx("correct");
         playSfx("hit");
         showToast("정답입니다! 강력한 기술 발동!", "success");
@@ -952,9 +982,11 @@
           enemyAvatar.classList.add("anim-hit");
           setTimeout(() => enemyAvatar.classList.remove("anim-hit"), 450);
 
+          const totalAtkBonus = (battleState.damageBonus || 0) + (battleState.counterAtkBonus || 0);
           let dmg = 0;
+
           if (skill.special === "secret_random_dmg") {
-            dmg = Math.random() < 0.5 ? 200 : 250;
+            dmg = (Math.random() < 0.5 ? 200 : 250) + totalAtkBonus;
           } else if (skill.special === "secret_miracle") {
             addBattleLog(`🌟 시크릿 미라클 발동! [${battleState.myName}]이(가) 소멸하며 즉시 승리합니다!`, "success");
             gameState.owned.splice(battleState.myIndex, 1);
@@ -963,8 +995,11 @@
             updateBattleUI();
             endBattle(true);
             return;
+          } else if (skill.special === "secret_sleep") {
+            battleState.enemyAsleepTurns = 1;
+            addBattleLog(`💤 분노의 시크릿 음파! 적 [${battleState.enemyName}]이(가) 잠들어 1턴 동안 공격할 수 없습니다!`, "success");
           } else {
-            dmg = (skill.damage || 0) + (skill.damage ? battleState.damageBonus : 0);
+            dmg = (skill.damage || 0) + (skill.damage ? totalAtkBonus : 0);
           }
 
           if (battleState.shields.enemy && dmg > 0) {
@@ -984,7 +1019,7 @@
             addBattleLog(`💚 체력을 ${healAmt} 회복했습니다!`, "success");
           } else if (skill.special === "shield") {
             battleState.shields.my = true;
-            addBattleLog(`🛡️ 방어막 생성! 다음 적 공격 피해가 크게 감소합니다.`, "success");
+            addBattleLog(`🛡️ 방어막 생성! 다음 적 공격 피해가 감소합니다.`, "success");
           } else if (skill.special && skill.special.startsWith("drain")) {
             const drainAmt = parseInt(skill.special.replace("drain", ""));
             battleState.myHp = Math.min(battleState.myMaxHp, battleState.myHp + drainAmt);
@@ -1017,6 +1052,16 @@
     function enemyTurnAction() {
       if (battleState.enemyHp <= 0) return;
 
+      if (battleState.enemyAsleepTurns > 0) {
+        battleState.enemyAsleepTurns--;
+        addBattleLog(`💤 적 [${battleState.enemyName}]이(가) 잠들어 있어 공격하지 못했습니다!`, "info");
+        battleState.turn++;
+        battleState.isMyTurn = true;
+        updateBattleUI();
+        renderBattleActions();
+        return;
+      }
+
       const myAvatar = document.getElementById("b-my-avatar");
       const enemyAvatar = document.getElementById("b-enemy-avatar");
 
@@ -1038,6 +1083,11 @@
 
         battleState.myHp -= dmg;
         addBattleLog(`💥 적 [${battleState.enemyName}]의 [${enemySkill.name}]! 내게 ${dmg}의 피해!`, "error");
+
+        if (battleState.myKey === "secret_unicorn") {
+          battleState.counterAtkBonus += 10;
+          addBattleLog(`🦄 [시크릿 유니콘] 분노 축적! 공격을 받아 공격력이 +10 강해졌습니다! (현재 피격 강화: +${battleState.counterAtkBonus})`, "success");
+        }
 
         updateBattleUI();
 
@@ -1094,29 +1144,37 @@
       rewards.innerHTML = "";
       itemDropBox.classList.add("hidden");
 
+      const myKey = battleState.myKey;
+      if (!gameState.monsterStats[myKey]) {
+        gameState.monsterStats[myKey] = { wins: 0, streak: 0, tier: monsterData[myKey].type };
+      }
+
       if (isWin) {
         playSfx("success");
         icon.innerText = "🏆";
         title.innerText = "배틀 승리!";
         title.className = "font-game text-3xl text-amber-300 mb-2";
 
-        const myKey = battleState.myKey;
         gameState.totalWins++;
         gameState.consecutiveWins++;
-
-        if (!gameState.monsterStats[myKey]) {
-          gameState.monsterStats[myKey] = { wins: 0, tier: monsterData[myKey].type };
-        }
         gameState.monsterStats[myKey].wins++;
+        gameState.monsterStats[myKey].streak = (gameState.monsterStats[myKey].streak || 0) + 1;
         gameState.dex[battleState.enemyKey] = true;
 
+        const monStreak = gameState.monsterStats[myKey].streak;
+
         let secretUnlockedNotice = "";
-        if (gameState.consecutiveWins >= 10 && !gameState.owned.includes("secret_dragon")) {
+        if (gameState.consecutiveWins >= 20 && !gameState.owned.includes("secret_unicorn")) {
+          gameState.owned.push("secret_unicorn");
+          gameState.dex["secret_unicorn"] = true;
+          gameState.monsterStats["secret_unicorn"] = { wins: 0, streak: 0, tier: "시크릿" };
+          gameState.consecutiveWins = 0;
+          secretUnlockedNotice = `<br><span class="text-pink-300 font-bold">🦄 20연승 달성! [시크릿 유니콘] 몬스터를 획득했습니다!</span>`;
+        } else if (gameState.consecutiveWins === 10 && !gameState.owned.includes("secret_dragon")) {
           gameState.owned.push("secret_dragon");
           gameState.dex["secret_dragon"] = true;
-          gameState.monsterStats["secret_dragon"] = { wins: 0, tier: "시크릿" };
-          gameState.consecutiveWins = 0;
-          secretUnlockedNotice = `<br><span class="text-fuchsia-300 font-bold">✨ 연속 10승 달성! [시크릿 용] 몬스터를 획득했습니다!</span>`;
+          gameState.monsterStats["secret_dragon"] = { wins: 0, streak: 0, tier: "시크릿" };
+          secretUnlockedNotice = `<br><span class="text-fuchsia-300 font-bold">✨ 10연승 달성! [시크릿 용] 몬스터를 획득했습니다!</span>`;
         }
 
         const droppedItem = rollItemDrop();
@@ -1126,43 +1184,51 @@
           itemDropBox.innerHTML = `${droppedItem.emoji} 전리품 획득! <span class="text-white">[${droppedItem.name}]</span> 아이템을 가방에 보관했습니다!`;
         }
 
-        desc.innerHTML = `상대 <strong class="text-white">${battleState.enemyName}</strong>을(를) 물리쳤습니다! (연속 승리: ${gameState.consecutiveWins}/10)${secretUnlockedNotice}<br>원하는 승리 보상을 선택하세요.`;
+        desc.innerHTML = `상대 <strong class="text-white">${battleState.enemyName}</strong>을(를) 물리쳤습니다! (<strong class="text-amber-300">${battleState.myName} ${monStreak}연승 중</strong> · 전체 연승 ${gameState.consecutiveWins}/20)${secretUnlockedNotice}<br>원하는 승리 보상을 선택하세요.`;
 
-        // 1. 상대방 몬스터 가져오기 버튼
         const btnCatch = document.createElement("button");
         btnCatch.className = "px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition";
         btnCatch.onclick = () => {
           gameState.owned.push(battleState.enemyKey);
           if (!gameState.monsterStats[battleState.enemyKey]) {
-            gameState.monsterStats[battleState.enemyKey] = { wins: 0, tier: monsterData[battleState.enemyKey].type };
+            gameState.monsterStats[battleState.enemyKey] = { wins: 0, streak: 0, tier: monsterData[battleState.enemyKey].type };
           }
           saveGame();
-          showToast(`[${battleState.enemyName}] 영입 성공! (가방에서 중복제거 가능)`, "success");
+          showToast(`[${battleState.enemyName}] 영입 성공!`, "success");
           switchTab("battle");
         };
         btnCatch.innerHTML = `🎁 [${battleState.enemyName}] 영입하기`;
         rewards.appendChild(btnCatch);
 
-        // 2. 출전 중인 내 몬스터 진화시키기 버튼 (진화체가 있는 경우만)
         const myMon = monsterData[myKey];
         if (myMon.evolvedTo && monsterData[myMon.evolvedTo]) {
           const nextKey = myMon.evolvedTo;
           const nextMon = monsterData[nextKey];
 
-          const btnEvolve = document.createElement("button");
-          btnEvolve.className = "px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm shadow-lg shadow-purple-600/30 transition";
-          btnEvolve.onclick = () => {
-            gameState.owned[battleState.myIndex] = nextKey;
-            gameState.dex[nextKey] = true;
-            const prevWins = gameState.monsterStats[myKey] ? gameState.monsterStats[myKey].wins : 1;
-            gameState.monsterStats[nextKey] = { wins: prevWins, tier: nextMon.type };
+          if (monStreak >= 3) {
+            const btnEvolve = document.createElement("button");
+            btnEvolve.className = "px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm shadow-lg shadow-purple-600/30 transition";
+            btnEvolve.onclick = () => {
+              gameState.owned[battleState.myIndex] = nextKey;
+              gameState.dex[nextKey] = true;
+              const prevWins = gameState.monsterStats[myKey] ? gameState.monsterStats[myKey].wins : 1;
+              const prevStreak = gameState.monsterStats[myKey] ? gameState.monsterStats[myKey].streak : 3;
+              gameState.monsterStats[nextKey] = { wins: prevWins, streak: prevStreak, tier: nextMon.type };
 
-            saveGame();
-            showToast(`🎉 [${myMon.name}] → [${nextMon.name}](${nextMon.type})로 진화 완료!`, "success");
-            switchTab("battle");
-          };
-          btnEvolve.innerHTML = `🧬 [${myMon.name}] → [${nextMon.name}] 진화시키기`;
-          rewards.appendChild(btnEvolve);
+              saveGame();
+              showToast(`🎉 [${myMon.name}] → [${nextMon.name}](${nextMon.type})로 진화 완료!`, "success");
+              switchTab("battle");
+            };
+            btnEvolve.innerHTML = `🧬 [${myMon.name}] → [${nextMon.name}] 진화시키기 (3연승 달성!)`;
+            rewards.appendChild(btnEvolve);
+          } else {
+            const remainStreak = 3 - monStreak;
+            const lockedBtn = document.createElement("button");
+            lockedBtn.disabled = true;
+            lockedBtn.className = "px-6 py-3 rounded-xl bg-slate-800/70 border border-slate-700 text-slate-400 font-bold text-sm cursor-not-allowed";
+            lockedBtn.innerHTML = `🔒 진화까지 ${remainStreak}연승 더 필요 (${monStreak}/3연승)`;
+            rewards.appendChild(lockedBtn);
+          }
         }
 
         const btnClose = document.createElement("button");
@@ -1173,10 +1239,11 @@
 
       } else {
         gameState.consecutiveWins = 0;
+        gameState.monsterStats[myKey].streak = 0;
         icon.innerText = "💥";
         title.innerText = "배틀 패배...";
         title.className = "font-game text-3xl text-rose-400 mb-2";
-        desc.innerText = `아쉽게도 패배했습니다. 다시 도전하세요!`;
+        desc.innerText = `아쉽게도 패배했습니다. (${battleState.myName} 연승 및 전체 연승이 초기화되었습니다) 다시 도전하세요!`;
 
         const btnRetry = document.createElement("button");
         btnRetry.className = "px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition";
@@ -1220,7 +1287,7 @@
           <div class="mt-4">
             ${count > 0 ? `
               <button onclick="useItem('${item.id}')" class="w-full py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-indigo-600 hover:from-fuchsia-500 hover:to-indigo-500 text-white font-game text-base shadow-lg shadow-fuchsia-600/20 transition">
-                ✨ 아이템 사용하기
+                ✨아이템 사용하기
               </button>
             ` : `
               <button disabled class="w-full py-3 rounded-xl bg-slate-800 text-slate-500 font-bold text-xs cursor-not-allowed">
@@ -1281,7 +1348,7 @@
 
       gameState.owned.forEach(key => {
         const mon = monsterData[key];
-        const stats = gameState.monsterStats[key] || { wins: 0, tier: mon.type };
+        const stats = gameState.monsterStats[key] || { wins: 0, streak: 0, tier: mon.type };
 
         const card = document.createElement("div");
         card.className = "bg-slate-950/80 border border-slate-800 rounded-2xl p-4 flex items-center gap-4";
@@ -1292,7 +1359,7 @@
               <h4 class="font-game text-lg text-white truncate">${mon.name}</h4>
               <span class="text-xs px-2 py-0.5 rounded-md border font-bold ${tierToCssClass(stats.tier)}">${stats.tier}</span>
             </div>
-            <p class="text-xs text-slate-400 mt-1">HP: ${mon.maxHp} | 배틀 승리: <strong class="text-amber-300">${stats.wins}승</strong></p>
+            <p class="text-xs text-slate-400 mt-1">HP: ${mon.maxHp} | 누적 <strong class="text-amber-300">${stats.wins}승</strong> · ${stats.streak || 0}연승</p>
             <div class="text-[11px] text-cyan-300 mt-1 truncate">대표 기술: ${mon.skills[0].name}</div>
           </div>
         `;
@@ -1364,16 +1431,16 @@
     }
 
     function confirmResetData() {
-      localStorage.removeItem("sci_monster_battle_100_v8");
+      localStorage.removeItem("sci_monster_battle_100_v12");
       gameState = {
         totalWins: 0,
         consecutiveWins: 0,
         owned: ["goblin", "fairy", "ghost"],
         dex: { goblin: true, fairy: true, ghost: true },
         monsterStats: {
-          goblin: { wins: 0, tier: "기본" },
-          fairy: { wins: 0, tier: "기본" },
-          ghost: { wins: 0, tier: "기본" }
+          goblin: { wins: 0, streak: 0, tier: "기본" },
+          fairy: { wins: 0, streak: 0, tier: "기본" },
+          ghost: { wins: 0, streak: 0, tier: "기본" }
         },
         items: {
           remove_dup: 0,
